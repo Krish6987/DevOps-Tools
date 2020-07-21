@@ -1,0 +1,31 @@
+DSL Script for a sample Freestyle Job
+
+job('Sample_Test_Job') {
+    scm {
+        git('https://github.com/Krish6987/DevOps-Tools.git')
+    }
+    triggers {
+        scm('H/15 * * * *')
+    }
+    steps {
+        shell 'echo hello world'
+    }
+}
+
+DSL Script for a sample pipeline job
+
+pipelineJob('Sample_Pipeline_Job') {
+  definition {
+    cpsScm {
+      scm {
+        git {
+          remote {
+            url('https://github.com/haaryrichardt/Jenkins.git')
+          }
+          branch('*/master')
+        }
+      }
+      lightweight()
+    }
+  }
+}
